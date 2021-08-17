@@ -1,0 +1,30 @@
+Internet of Things (IoT)
+Communicate between devices over large distances (m2m - Machine 2 Machine)
+
+A device can be anything: car, phone, app, website, api, sensor, mcu, small computer or large computer...
+
+MQTT
+AMQP
+HTTP
+CoAP
+RF/LoRA (433 MHz and 868 MHz, US: 900MHz)
+
+
+Device 2 Cloud (D2C/Publish) - Message from a device to Azure Iot Hub
+Cloud 2 Device (C2D) - Message from a service (Azure Iot Hub) to a device
+Direct Method - Run a specific function in the device like start, stop, reboot...
+Twin Props (Desired) - Desired props is set on the device for the device
+Twin Props (Reported) - Reported props is set on the device for the service (Azure Iot Hub)
+
+
+Iot Edge
+MCU -> RF ))))))) RF -> RPI -> --------- INTERNET -------- Azure Iot Hub
+MCU -> RF )))))))
+
+
+Threading  = CPU (Thread)
+Task       = OS (async-await)
+
+|
+|->|
+|  |

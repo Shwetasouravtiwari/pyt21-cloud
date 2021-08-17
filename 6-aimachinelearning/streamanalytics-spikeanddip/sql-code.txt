@@ -1,0 +1,16 @@
+WITH AnomalyDetectionSpikesAndDips AS
+(
+    SELECT 
+        IoTHub,
+        AnomalyDetection_SpikeAndDip(CAST(temp as float), 95, 120, 'spikesanddips')
+            OVER(LIMIT DURATION(second, 120)) as SpikeAndDipScore
+    FROM iothub
+)
+
+SELECT
+    IoTHub,
+    CAST(GetRecordPropertyValue(SpikeAndDipScore, 'Score') as float) as Score,
+    CAST(GetRecordPropertyValue(SpikeAndDipScore, 'IsAnomaly') as bigint) as IsAnomaly
+
+INTO cosmosdb
+FROM AnomalyDetectionSpikesAndDips
